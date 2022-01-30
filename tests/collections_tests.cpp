@@ -299,12 +299,13 @@ TEST_F(collections_tests, has_nulls_common_vector_bool){
          v->push_back(NULL);
          v->push_back(NULL);
 
+        bool result = collections::has_nulls<string>(*v);
+
         delete v->at(0);
         delete v->at(1);
         delete v->at(2);
         delete v;
 
-        bool result = collections::has_nulls<string>(*v);
         ASSERT_TRUE(result);
 
     } catch (exception ex) {
