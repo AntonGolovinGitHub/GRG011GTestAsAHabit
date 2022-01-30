@@ -75,11 +75,14 @@ TEST_F(arrays_tests, is_empty_special_stringarr_bool){
 TEST_F(arrays_tests, is_empty_special_stringarr_bool__1){
 
     try {
-        auto o = new vector<string*>();
-        o->push_back(NULL);
-        o->push_back(NULL);
+        string* o[2];
+        o[0] = NULL;
+        o[1] = NULL;
 
-        ASSERT_EQ(false, collections::is_empty<string>(*o));
+        ASSERT_EQ(false, arrays::is_empty<string>(o, 2));
+
+        delete o[0];
+        delete o[1];
 
     } catch(exception ex)
     {
